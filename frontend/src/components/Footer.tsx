@@ -7,7 +7,7 @@ function Footer() {
     return res.ok ? (await res.json()) as Version : {version: ''}
   }
 
-  const version = useQuery('version', getVersion)
+  const version = useQuery('version', getVersion, {staleTime: Infinity})
 
   return (
     <div style={{position: 'fixed', bottom: '0', left: '0', width: '100vw', backgroundColor: 'gray'}}>
