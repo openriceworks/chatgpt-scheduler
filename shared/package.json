@@ -1,16 +1,12 @@
 {
-  "name": "chatgpt-scheduler",
+  "name": "shared",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "workspaces": [
-    "backend",
-    "frontend",
-    "shared"
-  ]
+  "license": "ISC"
 }
