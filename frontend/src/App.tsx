@@ -31,18 +31,15 @@ function App() {
 
   function DateList() {
     return (
-      <Card sx={{width: '400px', minHeight: '400px', height:'fit-content', marginX: 'auto'}}>
+      <Box sx={{width: '400px', marginX: 'auto'}}>
         {
           askMutation.isLoading
-          ? <Skeleton variant="rounded" width={400} height={400}/>
-          :
+          ? <Skeleton variant="rounded" width={400} height={100}/>
+          : askMutation.data?.answer ? 
           <List>
             {
-              (askMutation.data?.answer ?? []).map((date, index) => (
+              (askMutation.data?.answer).map((date, index) => (
                 <ListItem key={index}>
-                  <ListItemIcon>
-                    <DateRange/>
-                  </ListItemIcon>
                   <ListItemText>
                     {date}
                   </ListItemText>
@@ -50,36 +47,41 @@ function App() {
               ))
             }
           </List>
+          : <></>
         }
-      </Card>
+      </Box>
     )
 
   }
 
   return (
     <div className="App">
-      <Box sx={{marginX: 'auto', minWidth: "720px", maxWidth: '1280px'}}>
-        <Typography variant='h5'>
+      <Box sx={{marginX: 'auto', minWidth: "720px", maxWidth: '1280px', minHeight: '400px', height: 'fit-content'}}>
+        <Typography variant='h5' sx={{marginBottom: '10px'}}>
           ChatGPTに日付のリストを作ってもらいます
         </Typography>
-        <TextField
-          sx={{paddingY: '20px', width: '400px'}}
-          placeholder={placeholder}
-          value={question}
-          onChange={e => {
-            setQuestion(e.target.value)
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position='end'>
-                <IconButton onClick={askQuestion}>
-                  <Send/>
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <DateList/>
+        <Card sx={{marginX: 'auto', marginBottom: '10px', width: 'fit-content', height: 'fit-content'}}>
+          <TextField
+            sx={{width: '400px'}}
+            placeholder={placeholder}
+            value={question}
+            onChange={e => {
+              setQuestion(e.target.value)
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton onClick={askQuestion}>
+                    <Send/>
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Card>
+        <Card sx={{marginX: 'auto', width: 'fit-content', height: 'fit-content'}}>
+          <DateList/>
+        </Card>
       </Box>
       <Footer/>
     </div>

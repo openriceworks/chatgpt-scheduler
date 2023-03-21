@@ -1,3 +1,4 @@
+import { Box, Typography } from "@mui/material"
 import { useQuery } from "react-query"
 import { Version } from 'shared'
 
@@ -10,9 +11,12 @@ function Footer() {
   const version = useQuery('version', getVersion, {staleTime: Infinity})
 
   return (
-    <div style={{position: 'fixed', bottom: '0', left: '0', width: '100vw', backgroundColor: 'gray'}}>
-      version: {version.data?.version}
-    </div>
+    <Box sx={{width: '100vw', position: 'fixed', bottom: '0', left: '0', paddingX: '10px'}}>
+      <Typography variant="inherit" textAlign="start">
+        version: {version.data?.version}
+      </Typography>
+    </Box>
+
   )
 }
 
