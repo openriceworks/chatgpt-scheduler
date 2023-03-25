@@ -1,15 +1,15 @@
-import {rest} from 'msw'
+import { rest } from "msw";
 
 export const handlers = [
-  rest.get('/version', (req, res,ctx) => {
+  rest.get("/version", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
-        version: 'mock'
-      })
-    )
+        version: "mock",
+      }),
+    );
   }),
-  rest.post('/api/ask', (req,res,ctx) => {
+  rest.post("/api/ask", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -23,9 +23,9 @@ export const handlers = [
           "2022-02-17",
           "2022-02-19",
           "2022-02-23",
-          "2022-02-29"
-        ]
-      })
-    )
-  })
-]
+          "2022-02-29",
+        ],
+      }),
+    );
+  }),
+];
